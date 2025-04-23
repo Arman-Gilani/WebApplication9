@@ -1,0 +1,19 @@
+﻿<p>@TempData["Message"]</p>
+
+<form role="form" method="post" enctype="multipart/form-data" asp-area="Demo" aspcontroller="Demo" asp-action="Save">
+    <!--Html.HiddenFor(x=>x.FileID)-->
+    <div class="form-group col-md-4">
+        <label for="exampleFormControlSelect1">Select File</label>
+        <input type="file" name="File" class="form-control" />
+    </div>
+    @*Here we have taken file path just for understanding purpose*@
+    @if (Model != null)
+    {
+        <div class="form-group col-md-4">
+            <label for="exampleFormControlSelect1">@Model.FilePath</label>
+        </div>
+    }
+    <br />
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form> 

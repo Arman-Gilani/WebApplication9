@@ -1,0 +1,104 @@
+﻿@using WebApplication9.Areas.Demo.Models;
+@using System.Data;
+@model DataTable;
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<title>Image and Video Display</title>
+</head>
+<body>
+	<div class="container">
+		<h1>Image and Video Display</h1>
+
+		<div>
+			<h2>Image</h2>
+			<img src="path/to/your/image.jpg" alt="Image description" class="img-fluid">
+		</div>
+
+		<div>
+			<h2>Video</h2>
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/your_video_id" allowfullscreen></iframe>
+			</div>
+		</div>
+	</div>
+</body>
+</html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+
+
+		.profile-container {
+			max-width: 600px;
+			margin: auto;
+			text-align: center;
+		}
+
+		.profile-image {
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 3px solid #fff;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+	</style>
+</head>
+<body>
+	
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">FileID</th>
+				<th scope="col">FilePath</th>
+				<th scope="col">File</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			@{
+				if (Model.Rows.Count > 0)
+				{
+					foreach (DataRow dr in Model.Rows)
+					{
+						<tr>
+							<td>@dr["FileID"]</td>
+							<td>@dr["FilePath"]</td>
+							<td>
+								<div class="profile-container">
+								@{}
+									<img src="@dr["FilePath"]" alt="User Profile" class="profile-image">
+								</div>
+							</td>
+						</tr>
+					}
+				}
+				else
+				{
+					<tr>
+						<td colspan="5" class="text-center">
+							<p class="col-form-label">No Records Found!</p>
+						</td>
+					</tr>
+				}
+			}
+
+		</tbody>
+	</table>
+	
+
+</body>
+</html>
